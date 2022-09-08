@@ -1,0 +1,155 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/dist-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import math
+
+print("Data Nominal \nTempat Lahir - Agama \nA=[Jombang, Islam] \nB=[Mojokerto, Islam] \nC=[Jombang, Kristen] \nD=[Jombang, Katolik]\n")
+print("Data Binary \nGender - StatusKawin \nA=[1, 1] \nB=[1, 0] \nC=[1, 0] \nD=[0, 1]\n")
+print("Data Numeric \nUmur - Berat badan \nA=[20, 45] \nB=[25, 60] \nC=[50, 55] \nD=[35, 70]\n")
+
+#Nominal
+#Tempat lahir - agama
+A=['Jombang', 'Islam']  
+B=['Mojokerto', 'Islam']
+C=['Jombang', 'Kristen']
+D=['Jombang', 'Katolik']
+
+data = input(str('pilihan \na = d(A,B) \nb = d(A,C) \nc = d(A,D) : '))
+nominal=0
+dataNominal=0
+if data == 'a':
+  for k in range (0,1,1):
+    if A[k]==B[k]:
+      nominal+=1
+  dataNominal = (2-nominal)/2
+  print("Hasil Nominal",dataNominal)
+elif data == 'b':
+  for l in range (0,1,1):
+    if A[l]==C[l]:
+      nominal+=1
+  dataNominal = (2-nominal)/2
+  print("Hasil Nominal",dataNominal)
+elif data == 'c':
+  for m in range (0,1,1):
+    if A[m]==D[m]:
+      nominal+=1
+  dataNominal = (2-nominal)/2
+  print("Hasil Nominal",dataNominal)
+else:
+  print('Data tidak sesuai pilihan!')
+
+
+#numeric
+#Umur - berat badan
+A=[20, 45]
+B=[25, 60]
+C=[50, 55]
+D=[35, 70]
+
+dataNumeric=0
+if data == 'a':
+  total=(A[0]-B[0])*(A[0]-B[0])+(A[1]-B[1])*(A[1]-B[1])
+  dataNumeric=math.sqrt(total)
+  print("Hasil Numeric = ",dataNumeric)
+elif data == 'b':
+  total=(A[0]-C[0])*(A[0]-C[0])+(A[1]-C[1])*(A[1]-C[1])
+  dataNumeric=math.sqrt(total)
+  print("Hasil Numeric = ",dataNumeric)
+elif data == 'c':
+  total=(A[0]-D[0])*(A[0]-D[0])+(A[1]-D[1])*(A[1]-D[1])
+  dataNumeric=math.sqrt(total)
+  print("Hasil Numeric = ",dataNumeric)
+else:
+  print("Data tidak sesuai pilihan!")
+
+#binary
+#Gender - status kawin
+A=[1, 1]
+B=[1, 0]
+C=[1, 0]
+D=[0, 1]
+
+dataBinary=0
+q=0
+r=0
+s=0
+t=0
+
+if data == 'a':
+  for i in range (0,2,1):
+    if A[i]== 1 and B[i]==1:
+      q+=1
+    if A[i]==1 and B[i]==0:
+      r+=1
+    if A[i]==0 and B[i]==1:
+      s+=1
+    if A[i]==0 and B[i]==0:
+      t+=1
+  dataBinary=(r+s)/(q+r+s+t)
+  print("Hasil Binary = ",dataBinary)
+elif data == 'b':
+  for i in range (0,2,1):
+    if A[i]== 1 and C[i]==1:
+      q+=1
+    if A[i]==1 and C[i]==0:
+      r+=1
+    if A[i]==0 and C[i]==1:
+      s+=1
+    if A[i]==0 and C[i]==0:
+      t+=1
+  dataBinary=(r+s)/(q+r+s+t)
+  print("Hasil Binary = ",dataBinary)
+elif data == 'c':
+  for i in range (0,2,1):
+    if A[i]== 1 and D[i]==1:
+      q+=1
+    if A[i]==1 and D[i]==0:
+      r+=1
+    if A[i]==0 and D[i]==1:
+      s+=1
+    if A[i]==0 and D[i]==0:
+      t+=1
+  dataBinary=(r+s)/(q+r+s+t)
+  print("Hasil Binary = ",dataBinary)
+else:
+  print('Data tidak sesuai pilihan!')
+
+print()
+print("Total = ", dataNominal+dataBinary+dataNumeric)
+------------------
+
+[0;31m[0m
+[0;31mStdinNotImplementedError[0mTraceback (most recent call last)
+[0;32m<ipython-input-2-f18d1ca0fdec>[0m in [0;36m<module>[0;34m[0m
+[1;32m     12[0m [0mD[0m[0;34m=[0m[0;34m[[0m[0;34m'Jombang'[0m[0;34m,[0m [0;34m'Katolik'[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m     13[0m [0;34m[0m[0m
+[0;32m---> 14[0;31m [0mdata[0m [0;34m=[0m [0minput[0m[0;34m([0m[0mstr[0m[0;34m([0m[0;34m'pilihan \na = d(A,B) \nb = d(A,C) \nc = d(A,D) : '[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     15[0m [0mnominal[0m[0;34m=[0m[0;36m0[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     16[0m [0mdataNominal[0m[0;34m=[0m[0;36m0[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.7/dist-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m    856[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    857[0m             raise StdinNotImplementedError(
+[0;32m--> 858[0;31m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    859[0m             )
+[1;32m    860[0m         return self._input_request(str(prompt),
+
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
+StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
+
